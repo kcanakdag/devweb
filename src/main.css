@@ -1,0 +1,35 @@
+.main-container {
+    min-height: 300vh;
+    padding: 0;
+    margin: 0;
+}
+
+.v-application__wrap {
+    background: radial-gradient(farthest-side at 60% 55%, #040e28, #020817) fixed;
+}
+
+.big-text {
+    font-weight: bold;
+    font-family: 'Arimo', sans-serif;
+    font-size: min(max(24px, 3vw), 80px);
+}
+
+.medium-text {
+    font-size: min(max(22px, 2.2vw), 25px);
+    padding-bottom: 15px;
+    opacity: 0.8
+}
+
+.small-text {
+    font-size: min(max(20px, 2vw), 18px);
+    opacity: 0.8
+}
+
+.nav-drawer-portfolio{
+    background-color: rgba(4, 14, 40, 0.6); /* Semi-transparent black */
+    backdrop-filter: blur(10px); /* Apply blur */
+}
+
+.v-navigation-drawer__scrim{
+    opacity: 0.5 !important;
+}
