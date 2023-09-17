@@ -7,7 +7,11 @@
         </span>
       </v-row>
       <v-row><span class="medium-text">I'm the guy who makes your website <span style="color: #45B1A0; font-weight: bold">look</span> and <span style="color: #45B1A0; font-weight: bold">work</span> great.</span></v-row>
-      <v-row><span class="small-text">Self-taught and mission-driven, I'm a full-stack developer at <a target="_blank" class="job-link" href="https://genomize.com">Genomize</a>, a startup translating genomic data into meaningful insights. Beyond the backend and frontend, I also delve into web design and cherish moments with my feline friend.</span></v-row>
+      <v-row>
+        <span class="small-text">
+          Self-taught and ever-evolving, I'm a full-stack developer at <a target="_blank" class="job-link" href="https://genomize.com">Genomize</a>, transforming genomic data into actionable insights. Balancing frontend and backend development with a growing knowledge in web security, I bring fresh and safe solutions to the table. Off-screen, I relax with my playful cat.
+        </span>
+      </v-row>
       <v-row class="flex-nowrap" style="padding-top: 40px" justify="end">
         <v-col cols="2">
           <a target="_blank" href="https://github.com/kcanakdag">
@@ -131,7 +135,7 @@ export default {
   width: 0;
   height: 2px;
   background: #45B1A0; /* change the color as needed */
-  bottom: 0;
+  bottom: -2px;
   left: 0;
   transition: width 0.3s ease;
 }

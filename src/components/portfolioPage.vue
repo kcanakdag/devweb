@@ -20,16 +20,13 @@
         <v-col v-if="!buttonsCollapse" class="observe" cols="6">
           <v-row class="observe" no-gutters justify="end">
             <v-col cols="auto">
-              <v-btn flat class="main-toolbar-buttons"><span>Home</span></v-btn>
+              <v-btn v-on:click="scrollTo('homeSection')" flat class="main-toolbar-buttons"><span>Home</span></v-btn>
             </v-col>
             <v-col cols="auto">
-              <v-btn flat class="main-toolbar-buttons"><span>About</span></v-btn>
+              <v-btn v-on:click="scrollTo('projectsSection')" flat class="main-toolbar-buttons"><span>Projects</span></v-btn>
             </v-col>
             <v-col cols="auto">
-              <v-btn flat class="main-toolbar-buttons"><span>Portfolio</span></v-btn>
-            </v-col>
-            <v-col cols="auto">
-              <v-btn flat class="main-toolbar-buttons"><span>Contact</span></v-btn>
+              <v-btn v-on:click="scrollTo('contactSection')" flat class="main-toolbar-buttons"><span>Contact</span></v-btn>
             </v-col>
           </v-row>
         </v-col>
@@ -48,51 +45,55 @@
     >
       <v-list color="transparent">
         <v-list-item style="text-align: center">
-          <v-btn flat class="main-toolbar-buttons"><span>Home</span></v-btn>
+          <v-btn v-on:click="scrollTo('homeSection')" flat class="main-toolbar-buttons"><span>Home</span></v-btn>
         </v-list-item>
-        <v-list-item>
-          <v-btn flat class="main-toolbar-buttons"><span>About</span></v-btn>
+        <v-list-item style="text-align: center">
+          <v-btn v-on:click="scrollTo('projectsSection')" flat class="main-toolbar-buttons"><span>Projects</span></v-btn>
         </v-list-item>
-        <v-list-item>
-          <v-btn flat class="main-toolbar-buttons"><span>Portfolio</span></v-btn>
-        </v-list-item>
-        <v-list-item>
-          <v-btn flat class="main-toolbar-buttons"><span>Contact</span></v-btn>
+        <v-list-item style="text-align: center">
+          <v-btn v-on:click="scrollTo('contactSection')" flat class="main-toolbar-buttons"><span>Contact</span></v-btn>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
     <v-container fluid>
-      <v-row justify="space-around"
-             align="center"
-             class="main-section flex-nowrap"
-             style="
+      <v-row
+          justify="space-around"
+          align="center"
+          class="main-section flex-nowrap"
+          style="
                     padding-top: 55px;
                     padding-right: clamp(16px, 4vw, 50px);
                     padding-left: clamp(16px, 4vw, 50px);
                     padding-bottom: 45px;">
         <v-col cols="5" class="observe flex-shrink-1">
-          <AboutMe></AboutMe>
+          <div ref="homeSection">
+            <AboutMe></AboutMe>
+          </div>
         </v-col>
         <v-col v-if="!buttonsCollapse" cols="auto" class="observe">
           <img style="width: 20vw; min-width: 150px" src="/drawing.png" alt="">
         </v-col>
       </v-row>
 
+<!--      <v-row class="main-section">-->
+<!--        <v-col class="d-flex align-center justify-center observe">-->
+<!--          <MyIntro></MyIntro>-->
+<!--        </v-col>-->
+<!--      </v-row>-->
+
       <v-row class="main-section">
         <v-col class="d-flex align-center justify-center observe">
-          <MyIntro></MyIntro>
+          <div ref="projectsSection">
+            <span style="color: #F5F5F5">Projects</span>
+          </div>
         </v-col>
       </v-row>
 
       <v-row class="main-section">
         <v-col class="d-flex align-center justify-center observe">
-          Projects
-        </v-col>
-      </v-row>
-
-      <v-row class="main-section">
-        <v-col class="d-flex align-center justify-center observe">
-          <span style="color: #F5F5F5">Contact me</span>
+          <div ref="contactSection">
+            <span style="color: #F5F5F5">Contact me</span>
+          </div>
         </v-col>
       </v-row>
     </v-container>
@@ -101,11 +102,10 @@
 
 <script>
 import AboutMe from "@/components/aboutMe.vue";
-import MyIntro from "@/components/myIntro.vue";
 
 export default {
   name: 'PortfolioPage',
-  components: {MyIntro, AboutMe },
+  components: {AboutMe },
   data() {
     return {
       isTop: true,
@@ -132,6 +132,10 @@ export default {
   methods: {
     handleScroll() {
       this.isTop = window.pageYOffset === 0;
+    },
+    scrollTo(refName) {
+      let block = refName === 'homeSection' ? 'end' : 'center'
+      this.$refs[refName].scrollIntoView({ block: block, behavior: 'smooth' });
     },
     setScreenSizeVars() {
       const width = window.innerWidth;
