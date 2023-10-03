@@ -111,6 +111,8 @@
 <script>
 import AboutMe from "@/components/aboutMe.vue";
 import ContactMe from "@/components/contactMe.vue";
+import KUTE from 'kute.js'
+
 
 export default {
   name: 'PortfolioPage',
@@ -124,7 +126,7 @@ export default {
     };
   },
   mounted() {
-    this.tween = window.KUTE.fromTo(
+    this.tween = KUTE.fromTo(
         '#blob1',
         { path: '#blob1' },
         { path: '#blob2' },
